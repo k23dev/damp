@@ -1,5 +1,8 @@
 .PHONY: up down rebuild
 
+# Variable que almacena el nombre de la carpeta
+CONT :=000
+
 up:
 	docker-compose up -d
 
@@ -13,3 +16,6 @@ rebuild:
 
 prune:
 	docker-compose down --remove-orphans
+
+terminal:
+	sudo docker exec -it $(CONT) bash

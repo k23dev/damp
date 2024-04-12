@@ -18,7 +18,7 @@ services:
       dockerfile: ./Dockerfile.php
     restart: always
     volumes:
-      - ./www/app:/var/www/app
+      - ./www/html:/var/www/html
     ports:
       - "8080:80"
     depends_on:
@@ -32,5 +32,5 @@ services:
   #   working_dir: /www/app
   #   command: ["composer", "install"]
 
-# volumes:
-#   mariadb_data:
+volumes:
+  mariadb_data:
