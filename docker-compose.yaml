@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: damp*1
+      MYSQL_DATABASE: damp
+      MYSQL_USER: damp
+      MYSQL_PASSWORD: damp1234
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  php_apache:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.php
+    restart: always
+    volumes:
+      - ./www/app:/var/www/app
+    ports:
+      - "8080:80"
+    depends_on:
+      - mariadb
+
+  # composer:
+  #   image: composer:2
+  #   #restart: always
+  #   volumes:
+  #     - ./www:/www/app
+  #   working_dir: /www/app
+  #   command: ["composer", "install"]
+
+# volumes:
+#   mariadb_data:
