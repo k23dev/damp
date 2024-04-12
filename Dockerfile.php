@@ -9,14 +9,12 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y curl \
     && apt-get install -y wget \
     && rm -rf /var/lib/apt/lists/* \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer create-project fuel/fuel /var/www/html
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # # RUN update site
 # # setea que se va a trabajar en la carpeta /etc/apache2/sites-available
 WORKDIR /var/www/html
 COPY ./www/html .
-
 
 # Exponer el puerto 80
 EXPOSE 80

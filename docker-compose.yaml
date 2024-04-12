@@ -23,14 +23,6 @@ services:
       - "8080:80"
     depends_on:
       - mariadb
-
-  # composer:
-  #   image: composer:2
-  #   #restart: always
-  #   volumes:
-  #     - ./www:/www/app
-  #   working_dir: /www/app
-  #   command: ["composer", "install"]
-
+      
 volumes:
   mariadb_data:
